@@ -7,6 +7,7 @@ import Navbar from './assets/Navbar';
 import Dashboard from './assets/Dashboard';
 import EcoCenter from './assets/EcoCenter';
 import ShoppingTracker from './assets/ShoppingTracker';
+import SellProducts from './assets/SellProductsPage';
 import Community from './assets/Community';
 import RouteOptimizer from './assets/RouteOptimizer';
 import Recommendations from './assets/Recommendation';
@@ -35,6 +36,7 @@ function App() {
                 <Route path="/" element={<Dashboard />} />
                 <Route path="/eco-center" element={<EcoCenter />} />
                 <Route path="/shopping" element={<ShoppingTracker />} />
+                <Route path="/sell-products" element={<SellProducts />} />
                 <Route path="/community" element={<Community />} />
                 <Route path="/routes" element={<RouteOptimizer />} />
                 <Route path="/recommendations" element={<Recommendations />} />

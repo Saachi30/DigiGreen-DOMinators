@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
-import { Sun, Moon, Menu, User, LogIn } from 'lucide-react';
+import { Sun, Moon, Menu, User, LogIn, ChevronDown } from 'lucide-react';
 import { Button } from '../@/components/ui/button';
 import TechnovateLogo from './TechWizard.png'
 import {
@@ -63,6 +63,7 @@ const Navbar = () => {
     navigate('/');
   };
 
+  
   const navItems = [
     { name: 'Home', path: '/' },
     { name: 'EcoCenter', path: '/eco-center' },
@@ -70,7 +71,6 @@ const Navbar = () => {
     { name: 'Map', path: '/map' },
     { name: 'Carpool', path: '/carpool' },
     { name: 'Community', path: '/community' },
-    { name: 'Shopping', path: '/shopping' },
   ];
 
   return (
@@ -99,6 +99,28 @@ const Navbar = () => {
               {item.name}
             </Link>
           ))}
+          
+          {/* EcoMarketplace Dropdown */}
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" className="text-sm font-medium flex items-center space-x-1">
+                <span>EcoMarketplace</span>
+                <ChevronDown className="h-4 w-4" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="center" className={theme === 'dark' ? 'bg-white text-black' : 'bg-gray-800 text-white'}>
+              <DropdownMenuItem>
+                <Link to="/shopping" className="w-full">
+                  🛒 Buy Sustainable Products
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <Link to="/sell-products" className="w-full">
+                  💰 Sell Your Products
+                </Link>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
 
         {/* Auth Buttons / Profile */}
@@ -149,6 +171,16 @@ const Navbar = () => {
                     </Link>
                   </DropdownMenuItem>
                 ))}
+                <DropdownMenuItem>
+                  <Link to="/shopping">
+                    🛒 Buy Sustainable Products
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <Link to="/sell-products">
+                    💰 Sell Your Products
+                  </Link>
+                </DropdownMenuItem>
                 {isAuthenticated && (
                   <DropdownMenuItem>
                     <Link to="/profile">Profile</Link>
@@ -175,6 +207,5 @@ const Navbar = () => {
     </nav>
   );
 };
-
 
 export default Navbar;
